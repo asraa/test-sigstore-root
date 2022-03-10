@@ -16,9 +16,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/asraa/test-sigstore-root/pkg/keys"
 	"github.com/peterbourgon/ff/v3/ffcli"
 	"github.com/sigstore/cosign/cmd/cosign/cli/pivcli"
-	"github.com/sigstore/root-signing/pkg/keys"
 	"github.com/theupdateframework/go-tuf/data"
 	"golang.org/x/term"
 )

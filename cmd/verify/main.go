@@ -1,6 +1,6 @@
 package main
 
-import "github.com/sigstore/root-signing/cmd/verify/app"
+import "github.com/asraa/test-sigstore-root/cmd/verify/app"
 
 func main() {
 	app.Execute()

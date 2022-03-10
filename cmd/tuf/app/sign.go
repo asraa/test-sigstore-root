@@ -11,10 +11,10 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/asraa/test-sigstore-root/pkg/keys"
+	"github.com/asraa/test-sigstore-root/pkg/repo"
 	"github.com/peterbourgon/ff/v3/ffcli"
 	"github.com/sigstore/cosign/pkg/cosign/pivkey"
-	"github.com/sigstore/root-signing/pkg/keys"
-	"github.com/sigstore/root-signing/pkg/repo"
 	"github.com/sigstore/sigstore/pkg/signature"
 	"github.com/sigstore/sigstore/pkg/signature/options"
 	cjson "github.com/tent/canonical-json-go"

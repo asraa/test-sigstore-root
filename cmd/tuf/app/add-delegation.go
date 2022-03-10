@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
+	pkeys "github.com/asraa/test-sigstore-root/pkg/keys"
+	prepo "github.com/asraa/test-sigstore-root/pkg/repo"
 	"github.com/pkg/errors"
-	pkeys "github.com/sigstore/root-signing/pkg/keys"
-	prepo "github.com/sigstore/root-signing/pkg/repo"
 	"github.com/theupdateframework/go-tuf/data"
 
 	"github.com/peterbourgon/ff/v3/ffcli"

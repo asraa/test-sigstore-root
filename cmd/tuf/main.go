@@ -1,3 +1,4 @@
+//go:build pivkey
 // +build pivkey
 
 package main
@@ -8,8 +9,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/asraa/test-sigstore-root/cmd/tuf/app"
 	"github.com/peterbourgon/ff/v3/ffcli"
-	"github.com/sigstore/root-signing/cmd/tuf/app"
 )
 
 var (

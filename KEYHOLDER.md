@@ -1,6 +1,6 @@
 # TUF Generation
 
-0. **The keyholders and the conductor** should fork [this](https://github.com/sigstore/root-signing) git repository by clicking the "fork" button on GitHub. Then, set your `${GITHUB_USER}` with your GitHub username and execute the script:
+0. **The keyholders and the conductor** should fork [this](https://github.com/asraa/test-sigstore-root) git repository by clicking the "fork" button on GitHub. Then, set your `${GITHUB_USER}` with your GitHub username and execute the script:
 
 ```
 export GITHUB_USER=${YOUR_GITHUB_USER}

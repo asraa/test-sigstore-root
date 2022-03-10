@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/asraa/test-sigstore-root/pkg/repo"
 	"github.com/pkg/errors"
-	"github.com/sigstore/root-signing/pkg/repo"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/theupdateframework/go-tuf"

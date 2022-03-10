@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/sigstore/root-signing/pkg/keys"
+	"github.com/asraa/test-sigstore-root/pkg/keys"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

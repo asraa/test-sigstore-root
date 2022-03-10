@@ -12,9 +12,9 @@ import (
 	"path/filepath"
 	"time"
 
+	pkeys "github.com/asraa/test-sigstore-root/pkg/keys"
+	prepo "github.com/asraa/test-sigstore-root/pkg/repo"
 	"github.com/peterbourgon/ff/v3/ffcli"
-	pkeys "github.com/sigstore/root-signing/pkg/keys"
-	prepo "github.com/sigstore/root-signing/pkg/repo"
 	cjson "github.com/tent/canonical-json-go"
 	"github.com/theupdateframework/go-tuf"
 	"github.com/theupdateframework/go-tuf/data"
