@@ -39,4 +39,4 @@ git commit -s -a -m "Signing delegations for ${GITHUB_USER}"
 git push -f origin sign-delegations
 
 # Open the browser
-open "https://github.com/${GITHUB_USER}/root-signing/pull/new/sign-delegations" || xdg-open "https://github.com/${GITHUB_USER}/root-signing/pull/new/sign-delegations"
+open "https://github.com/${GITHUB_USER}/test-sigstore-root/pull/new/sign-delegations" || xdg-open "https://github.com/${GITHUB_USER}/test-sigstore-root/pull/new/sign-delegations"
