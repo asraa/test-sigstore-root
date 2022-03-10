@@ -8,7 +8,7 @@ if [ -z "$GITHUB_USER" ]; then
     exit
 fi
 if [ -z "$REPO" ]; then
-    REPO=$(pwd)/ceremony/$(date '%Y-%m-%d')
+    REPO=$(pwd)/ceremony/$(date '+%Y-%m-%d')
     echo "Using default REPO $REPO"
 fi
 
