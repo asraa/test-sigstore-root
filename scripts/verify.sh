@@ -19,9 +19,9 @@ git remote -v
 
 # Setup forks
 git remote rm upstream || true
-git remote add upstream git@github.com:sigstore/root-signing.git
+git remote add upstream git@github.com:asraa/test-sigstore-root.git
 git remote rm origin || true
-git remote add origin git@github.com:"$GITHUB_USER"/root-signing.git
+git remote add origin git@github.com:"$GITHUB_USER"/test-sigstore-root.git
 git remote -v
 
 # build the verification binary
