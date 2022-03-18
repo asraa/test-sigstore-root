@@ -1,13 +1,8 @@
 {
-	"signatures": [
-		{
-			"keyid": "f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f",
-			"sig": "304402202b0c7d361f791a3cf13a2044498ce7dcf9dfe53506ff51f660995b79fdc4770e02204db3f960ae45d6a0feab5cb2f2c205dc1c1ccee06930a0cef35d3098fb8c2aa3"
-		}
-	],
+	"signatures": null,
 	"signed": {
 		"_type": "targets",
-		"expires": "2022-06-15T16:10:59Z",
+		"expires": "2022-06-18T17:40:03Z",
 		"spec_version": "1.0",
 		"targets": {},
 		"version": 1

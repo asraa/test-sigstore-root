@@ -57,6 +57,7 @@ git pull upstream main
 git status
 
 # Setup the root and targets
+rm -r ${REPO}/staged 
 ./tuf init -repository $REPO -target-meta config/targets-metadata.yaml -snapshot ${SNAPSHOT_KEY} -timestamp ${TIMESTAMP_KEY} -previous "${PREV_REPO}"
 # Add rekor delegation
 cp targets/rekor.pub targets/rekor.0.pub

@@ -2,15 +2,15 @@
 	"signatures": [
 		{
 			"keyid": "7b954e23cd01e56c5a8a40d25547516822436766e803d8e9c647710191cac3c3",
-			"sig": "30460221009240485d7425b1707edcae8010d6fc73a2256842b7ae939d170ef1aee92d410d0221009627d6f4b3227896f10c006e427b210ccefc7acf195cc0646baa5f3bbc5baedc"
+			"sig": ""
 		},
 		{
 			"keyid": "da0a4e6837ba7c3d0e9e565dad31caa6eb97fa341be4f78bfda6ca67d5b0d5e5",
-			"sig": "30450220369e174ef4b656184066c08bc75deb94fdf84973c99ff1bf36f2357c54cdbd0e02210089ae0c204167967133f520cdc8c251dffa7f29977094c895ec95119b6d1b3dff"
+			"sig": ""
 		},
 		{
 			"keyid": "adf5dbe7f5f15b83062b9a30393f2b024c67a43e39fec5d08d538740418d2606",
-			"sig": "3045022100c63b81be58174324707102f43a87e62404313b5ec7fdb61331e327c4bba02f77022041c56d0f12869e4adf1de7179d2141558f1629b00b1f141b578f367fe19188a6"
+			"sig": ""
 		}
 	],
 	"signed": {
@@ -65,7 +65,7 @@
 				}
 			]
 		},
-		"expires": "2022-09-15T16:10:59Z",
+		"expires": "2022-09-18T17:40:04Z",
 		"spec_version": "1.0",
 		"targets": {
 			"artifact.pub": {
