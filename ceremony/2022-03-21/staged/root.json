@@ -1,0 +1,99 @@
+{
+	"signatures": [
+		{
+			"keyid": "7b954e23cd01e56c5a8a40d25547516822436766e803d8e9c647710191cac3c3",
+			"sig": ""
+		},
+		{
+			"keyid": "1d7ceb26690ce01a5868c926e8186e00effcadf5e9db3d1d9d7cae4b268e080f",
+			"sig": ""
+		},
+		{
+			"keyid": "adf5dbe7f5f15b83062b9a30393f2b024c67a43e39fec5d08d538740418d2606",
+			"sig": ""
+		}
+	],
+	"signed": {
+		"_type": "root",
+		"consistent_snapshot": false,
+		"expires": "2022-07-24T15:40:49.482440925Z",
+		"keys": {
+			"1d7ceb26690ce01a5868c926e8186e00effcadf5e9db3d1d9d7cae4b268e080f": {
+				"keyid_hash_algorithms": [
+					"sha256",
+					"sha512"
+				],
+				"keytype": "ecdsa-sha2-nistp256",
+				"keyval": {
+					"public": "046795b0711ce5ab034bc7201ff653256e8d2baf29757a6f1ad589cddadd1aa267a69159a5e6575684f495e9db817c7f3f922a540ea67e792f8ff2f6c30d5a74a0"
+				},
+				"scheme": "ecdsa-sha2-nistp256"
+			},
+			"7b954e23cd01e56c5a8a40d25547516822436766e803d8e9c647710191cac3c3": {
+				"keyid_hash_algorithms": [
+					"sha256",
+					"sha512"
+				],
+				"keytype": "ecdsa-sha2-nistp256",
+				"keyval": {
+					"public": "04cf88423fb5ab27a28b46bf4856606d986ad4fdeef8246cd19bbe152f99210e4353fd6a3b336afe14bc2e440722e3115bd59bb729d9305c0f625da7cd22121102"
+				},
+				"scheme": "ecdsa-sha2-nistp256"
+			},
+			"adf5dbe7f5f15b83062b9a30393f2b024c67a43e39fec5d08d538740418d2606": {
+				"keyid_hash_algorithms": [
+					"sha256",
+					"sha512"
+				],
+				"keytype": "ecdsa-sha2-nistp256",
+				"keyval": {
+					"public": "04b3a74ffd19a91b6ad9da31bab03654aec1d195e2aecde490f51fa34912562abd0a732bac0f11b4a6252ad4ef6a07bd1f1cdb585fe21acdbd5169008fb720737f"
+				},
+				"scheme": "ecdsa-sha2-nistp256"
+			},
+			"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f": {
+				"keyid_hash_algorithms": [
+					"sha256",
+					"sha512"
+				],
+				"keytype": "ecdsa-sha2-nistp256",
+				"keyval": {
+					"public": "042fe253a54e2101c529bb2090331d6beec72fcd3757a0a2b8e00e4854e324b78894cbbbecc25e6e043eac16e1184650d7235ec75b7fd3a5c16a2b7215b876e84a"
+				},
+				"scheme": "ecdsa-sha2-nistp256"
+			}
+		},
+		"roles": {
+			"root": {
+				"keyids": [
+					"7b954e23cd01e56c5a8a40d25547516822436766e803d8e9c647710191cac3c3",
+					"adf5dbe7f5f15b83062b9a30393f2b024c67a43e39fec5d08d538740418d2606",
+					"1d7ceb26690ce01a5868c926e8186e00effcadf5e9db3d1d9d7cae4b268e080f"
+				],
+				"threshold": 3
+			},
+			"snapshot": {
+				"keyids": [
+					"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f"
+				],
+				"threshold": 1
+			},
+			"targets": {
+				"keyids": [
+					"7b954e23cd01e56c5a8a40d25547516822436766e803d8e9c647710191cac3c3",
+					"adf5dbe7f5f15b83062b9a30393f2b024c67a43e39fec5d08d538740418d2606",
+					"1d7ceb26690ce01a5868c926e8186e00effcadf5e9db3d1d9d7cae4b268e080f"
+				],
+				"threshold": 3
+			},
+			"timestamp": {
+				"keyids": [
+					"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f"
+				],
+				"threshold": 1
+			}
+		},
+		"spec_version": "1.0",
+		"version": 2
+	}
+}
