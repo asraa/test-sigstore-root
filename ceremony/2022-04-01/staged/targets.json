@@ -1,7 +1,15 @@
 {
 	"signatures": [
 		{
+			"keyid": "6810f69c0e1735c7c61aaf34d03fdca11dc759fd6ed7d49672876ccde5004cf5",
+			"sig": ""
+		},
+		{
 			"keyid": "f537348d88694a2cd58c8332f46f97becea1fcdc292577abc8cfd1d5fa757954",
+			"sig": ""
+		},
+		{
+			"keyid": "dad7408b91c9717608039fa486652fe7723b6b82273e04060fc78fd0dbdf0a20",
 			"sig": ""
 		}
 	],
@@ -26,6 +34,17 @@
 					"keyids": [
 						"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f"
 					],
+					"name": "revocation",
+					"paths": [
+						"*"
+					],
+					"terminating": false,
+					"threshold": 1
+				},
+				{
+					"keyids": [
+						"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f"
+					],
 					"name": "rekor",
 					"paths": [
 						"rekor.*.pub"
@@ -43,21 +62,10 @@
 					],
 					"terminating": false,
 					"threshold": 1
-				},
-				{
-					"keyids": [
-						"f52fe349ef8e8cc3dd1dd5d6a0a755365a7aa2fba623b0986f447a1b79f99a5f"
-					],
-					"name": "revocation",
-					"paths": [
-						"*"
-					],
-					"terminating": false,
-					"threshold": 1
 				}
 			]
 		},
-		"expires": "2022-10-01T18:13:30Z",
+		"expires": "2022-10-01T18:32:25Z",
 		"spec_version": "1.0",
 		"targets": {
 			"artifact.pub": {

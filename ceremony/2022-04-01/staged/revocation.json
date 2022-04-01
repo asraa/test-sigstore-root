@@ -2,7 +2,7 @@
 	"signatures": null,
 	"signed": {
 		"_type": "targets",
-		"expires": "2022-10-01T18:13:30Z",
+		"expires": "2022-10-01T18:32:19Z",
 		"spec_version": "1.0",
 		"targets": {
 			"revocation.list": {
