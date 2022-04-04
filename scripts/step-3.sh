@@ -19,10 +19,10 @@ if [ -z "$REVOCATION_KEY" ]; then
     echo "Set REVOCATION_KEY"
     exit
 fi
-if [ -z "$CEREMONY_DATE" ]; then
-    CEREMONY_DATE=$(date '+%Y-%m-%d')
+if [ -z "$REPO" ]; then
+    REPO=$(pwd)/ceremony/$(date '+%Y-%m-%d')
+    echo "Using default REPO $REPO"
 fi
-export REPO=$(pwd)/ceremony/$CEREMONY_DATE
 
 # Dump the git state
 git status
@@ -44,4 +44,7 @@ git commit -s -a -m "Signing delegations for ${GITHUB_USER}"
 git push -f origin sign-delegations
 
 # Open the browser
-open "https://github.com/${GITHUB_USER}/test-sigstore-root/pull/new/sign-delegations" || xdg-open "https://github.com/${GITHUB_USER}/test-sigstore-root/pull/new/sign-delegations"
+export GITHUB_URL=$(git remote -v | awk '/^upstream/{print $2}'| head -1 | sed -Ee 's#(git@|git://)#https://#' -e 's@com:@com/@' -e 's#\.git$##')
+export BRANCH=$(git symbolic-ref HEAD | cut -d"/" -f 3,4)
+export PR_URL=${GITHUB_URL}"/compare/main..."${BRANCH}"?expand=1"
+open "${PR_URL}" || xdg-open "${PR_URL}"
