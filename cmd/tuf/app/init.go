@@ -99,11 +99,19 @@ func InitCmd(ctx context.Context, directory, previous, targets, snapshotRef, tim
 	if err != nil {
 		return err
 	}
+	var allRootKeys []*data.PublicKey
 	for _, role := range []string{"root", "targets"} {
 		currentKeyMap := map[string]bool{}
 		for _, tufKey := range keys {
 			currentKeyMap[tufKey.IDs()[0]] = true
 			if err := repo.AddVerificationKeyWithExpiration(role, tufKey, expiration); err != nil {
+				return err
+			}
+		}
+		if role == "root" {
+			// This retrieves all the new root keys, but before we revoke any.
+			allRootKeys, err = repo.RootKeys()
+			if err != nil {
 				return err
 			}
 		}
@@ -197,7 +205,7 @@ func InitCmd(ctx context.Context, directory, previous, targets, snapshotRef, tim
 	if err != nil {
 		return err
 	}
-	if err := setMetaWithSigKeyIDs(store, "targets.json", t, keys); err != nil {
+	if err := setMetaWithSigKeyIDs(store, "targets.json", t, allRootKeys); err != nil {
 		return err
 	}
 
@@ -209,7 +217,7 @@ func InitCmd(ctx context.Context, directory, previous, targets, snapshotRef, tim
 	}
 	root.Version = curRootVersion + 1
 	root.Expires = expiration
-	return setMetaWithSigKeyIDs(store, "root.json", root, keys)
+	return setMetaWithSigKeyIDs(store, "root.json", root, allRootKeys)
 }
 
 func setSignedMeta(store tuf.LocalStore, role string, s *data.Signed) error {
@@ -227,7 +235,7 @@ func setMetaWithSigKeyIDs(store tuf.LocalStore, role string, meta interface{}, k
 	}
 
 	// Add empty sigs
-	emptySigs := make([]data.Signature, 0, 1)
+	emptySigs := make([]data.Signature, 0, len(keys))
 
 	for _, key := range keys {
 		for _, id := range key.IDs() {
