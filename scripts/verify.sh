@@ -14,6 +14,7 @@ fi
 
 # Dump the git state
 git checkout main
+git pull upstream main
 git status
 git remote -v
 
