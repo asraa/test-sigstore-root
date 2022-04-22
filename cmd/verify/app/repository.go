@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/asraa/test-sigstore-root/pkg/repo"
@@ -94,35 +95,38 @@ func (r fileRemoteStore) GetTarget(target string) (io.ReadCloser, int64, error) 
 	return ioutil.NopCloser(bytes.NewReader(payload)), int64(len(payload)), nil
 }
 
-func verifyStagedMetadata(repository string) error {
+func verifyMetadata(repository string) error {
 	log.Printf("\nOutputting metadata verification at %s...\n", repository)
 
 	// logs the state of each metadata file, including number of signatures to achieve threshold
 	// and verifies the signatures in each file.
 	store := tuf.FileSystemStore(repository, nil)
-	db, err := repo.CreateDb(store)
-	if err != nil {
-		return err
-	}
-	root, err := repo.GetRootFromStore(store)
+
+	db, thresholds, err := repo.CreateDb(store)
 	if err != nil {
 		return err
 	}
 
-	for name, role := range root.Roles {
-		log.Printf("\nVerifying staged %s...", name)
+	meta, err := store.GetMeta()
+	if err != nil {
+		return err
+	}
 
-		if !store.FileIsStaged(name + ".json") {
-			// We only want to verify staged metadata.
-			log.Printf("\tMetadata is not staged yet\n")
+	for name, md := range meta {
+		if repo.IsVersionedManifest(name) {
+			continue
+		}
+		// only verify staged.
+		if !store.FileIsStaged(name) {
 			continue
 		}
 
-		signed, err := repo.GetSignedMeta(store, name+".json")
-		if err != nil {
-			// Metadata file may not exist yet.
-			log.Printf("\t%s", err)
-			continue
+		log.Printf("\nVerifying %s...", name)
+
+		name = strings.TrimSuffix(name, ".json")
+		signed := &data.Signed{}
+		if err := json.Unmarshal(md, signed); err != nil {
+			return err
 		}
 
 		// Rremove the empty placeholder signatures
@@ -137,13 +141,13 @@ func verifyStagedMetadata(repository string) error {
 		if err = db.VerifySignatures(signed, name); err != nil {
 			if _, ok := err.(verify.ErrRoleThreshold); ok {
 				// we may not have all the sig, allow partial sigs for success
-				log.Printf("\tContains %d/%d valid signatures\n", err.(verify.ErrRoleThreshold).Actual, role.Threshold)
+				log.Printf("\tContains %d/%d valid signatures\n", err.(verify.ErrRoleThreshold).Actual, thresholds[name])
 				_, err := printAndGetSignedMeta(name, signed.Signed)
 				if err != nil {
 					return err
 				}
 			} else if err.Error() == verify.ErrNoSignatures.Error() {
-				log.Printf("\tContains 0/%d valid signatures\n", role.Threshold)
+				log.Printf("\tContains 0/%d valid signatures\n", thresholds[name])
 				_, err := printAndGetSignedMeta(name, signed.Signed)
 				if err != nil {
 					return err
@@ -154,6 +158,10 @@ func verifyStagedMetadata(repository string) error {
 			}
 		} else {
 			log.Printf("\tSuccess! Signatures valid and threshold achieved\n")
+			_, err := printAndGetSignedMeta(name, signed.Signed)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
@@ -213,6 +221,7 @@ func getClientState(local client.LocalStore) (map[string]signedMeta, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "getting trusted meta")
 	}
+
 	for role, md := range trustedMeta {
 		s := &data.Signed{}
 		if err := json.Unmarshal(md, s); err != nil {
@@ -224,6 +233,7 @@ func getClientState(local client.LocalStore) (map[string]signedMeta, error) {
 		}
 		res[role] = *sm
 	}
+
 	return res, nil
 }
 
@@ -243,7 +253,8 @@ var repositoryCmd = &cobra.Command{
 		if staged {
 			// Assumes a local repository!
 			// This will include staged metadata and verify partial signatures
-			if err := verifyStagedMetadata(repository); err != nil {
+			log.Printf("STAGED METADATA")
+			if err := verifyMetadata(repository); err != nil {
 				log.Printf("error verifying metadata: %s", err)
 				os.Exit(1)
 			}
@@ -256,6 +267,9 @@ var repositoryCmd = &cobra.Command{
 			_ = cmd.Usage()
 			os.Exit(1)
 		}
+
+		log.Printf("\nVERIFYING TUF CLIENT UPDATE\n\n")
+
 		rootMeta, err := ioutil.ReadFile(root.String())
 		if err != nil {
 			log.Printf("error reading trusted TUF root: %s", root.String())
